@@ -1,12 +1,13 @@
 import "@testing-library/jest-dom/extend-expect";
 
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import { createStore } from "redux";
 import { Catalog } from "../../../src/client/pages/Catalog";
 import { Application } from "../../../src/client/Application";
 import { Product } from "../../../src/client/pages/Product";
+import { initStore } from "../../../src/client/store";
 
 describe("Каталог", () => {
   it("Каталог рендерится ", () => {
@@ -82,7 +83,6 @@ describe("Каталог", () => {
       </MemoryRouter>
     );
 
-    //screen.logTestingPlaygroundURL();
     expect(
       screen.queryByRole("heading", { name: "товар1" })
     ).toBeInTheDocument();
